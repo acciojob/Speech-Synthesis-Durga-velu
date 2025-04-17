@@ -46,7 +46,13 @@ const synth=window.speechSynthesis;
 	}
 	speakButton.addEventListeners("click",()=>{
 		let toSpeak=new SpeechSynthesisUtterance("text.value")
-		let selectedvoice=voicesDropdown.selectedOptions[0].getAttribute("data-name")
+		let selectedvoiceName=voicesDropdown.selectedOptions[0].getAttribute("data-name")
+   voices.forEach((voice)=>{
+	   if(voice.name ===selectedvoiceName ){
+		   toSpeak.voice=voice;
+	   }
+   })
+		
 	})
 
 function voicestotheText(){
