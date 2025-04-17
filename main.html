@@ -36,14 +36,26 @@
   const speakButton = document.querySelector('#speak');
   const stopButton = document.querySelector('#stop');
 const synth=window.speechSynthesis;
+	 const text = document.querySelector('textarea');
   //Your code goes here
-voicestotheText()
+
+	voicestotheText()
+	
+	if(speechSynthesis !== undefined){
+	speechSynthesis.onvoicesChanged=voicestotheText;
+	}
+	speakButton.addEventListeners("click",()=>{
+		let toSpeak=new SpeechSynthesisUtterance("text.value")
+		let selectedvoice=voicesDropdown.selectedOptions[0].getAttribute("data-name")
+	})
+
 function voicestotheText(){
 	voices=synth.getVoices();
 	voicesDropdown.innerHTML="";
 	voices.forEach((voice)=>{
 		let listItem=document.createElement("option");
-		listItem.textContent=voice.name
+		listItem.textContent=voice.name;
+		listItem.setAttribute("data-lang", voice.lang)
 		voicesDropdown.appendChild(listItem)
 	})
 }
