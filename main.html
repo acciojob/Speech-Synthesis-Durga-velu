@@ -48,7 +48,7 @@ const synth=window.speechSynthesis;
 	if(speechSynthesis !== undefined){
 	speechSynthesis.onvoicesChanged=voicestotheText;
 	}
-	speakButton.addEventListeners("click",()=>{
+	speakButton.addEventListener("click", () => {
 		let toSpeak=new SpeechSynthesisUtterance(text.value);
 		toSpeak.rate = options[0].value;
 		toSpeak.pitch = options[1].value;
