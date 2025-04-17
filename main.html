@@ -48,15 +48,19 @@ const synth=window.speechSynthesis;
 		let toSpeak=new SpeechSynthesisUtterance(text.value);
 		toSpeak.rate = options[0].value;
 		toSpeak.pitch = options[1].value;
-		let selectedvoiceName=voicesDropdown.selectedOptions[0].getAttribute("data-name")
+		let selectedVoiceName=voicesDropdown.selectedOptions[0].getAttribute("data-name")
    voices.forEach((voice)=>{
-	   if(voice.name ===selectedvoiceName ){
+	   if(voice.name ===selectedVoiceName ){
 		   toSpeak.voice=voice;
 	   }
    })
 		synth.speak(toSpeak);
 	})
 
+stopButton.addEventListener("click", () => {
+    synth.cancel(); 
+});
+	
 function voicestotheText(){
 	voices=synth.getVoices();
 	voicesDropdown.innerHTML="";
