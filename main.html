@@ -35,8 +35,19 @@
   const options = document.querySelectorAll('[type="range"], [name="text"]');
   const speakButton = document.querySelector('#speak');
   const stopButton = document.querySelector('#stop');
-
+const synth=window.speechSynthesis;
   //Your code goes here
+voicestotheText()
+function voicestotheText(){
+	voices=synth.getVoices();
+	voicesDropdown.innerHTML="";
+	voices.forEach((voice)=>{
+		let listItem=document.createElement("option");
+		listItem.textContent=voice.name
+		voicesDropdown.appendChild(listItem)
+	})
+}
+	
 </script>
 
 </body>
