@@ -56,6 +56,7 @@ function voicestotheText(){
 		let listItem=document.createElement("option");
 		listItem.textContent=voice.name;
 		listItem.setAttribute("data-lang", voice.lang)
+		listItem.setAttribute("data-name", voice.name)
 		voicesDropdown.appendChild(listItem)
 	})
 }
